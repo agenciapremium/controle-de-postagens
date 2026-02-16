@@ -10,10 +10,16 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const client = new Client({
-    connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL,
 });
 
 const schemaSql = `
+
+-- Drop existing tables to ensure clean state
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS scopes;
+DROP TABLE IF EXISTS clients;
+
 -- Create Clients Table
 CREATE TABLE IF NOT EXISTS clients (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -29,7 +35,7 @@ CREATE TABLE IF NOT EXISTS scopes (
   client_id UUID REFERENCES clients(id) ON DELETE CASCADE,
   material_type VARCHAR(100) NOT NULL,
   quantity_per_week INTEGER NOT NULL,
-  posting_days TEXT[], -- Array of days, e.g., ['Monday', 'Wednesday']
+  posting_days TEXT[],
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -37,30 +43,30 @@ CREATE TABLE IF NOT EXISTS scopes (
 CREATE TABLE IF NOT EXISTS posts (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   client_id UUID REFERENCES clients(id) ON DELETE CASCADE,
-  scope_id UUID REFERENCES scopes(id) ON DELETE SET NULL,
-  scheduled_date DATE NOT NULL,
-  posted_date TIMESTAMP WITH TIME ZONE,
-  status VARCHAR(50), -- 'EM_DIA', 'ATENCAO', 'ATRASADA' (Can be computed or stored)
+  content_type VARCHAR(100),
+  date TIMESTAMP WITH TIME ZONE,
+  status VARCHAR(50) DEFAULT 'pending',
   notes TEXT,
+  link TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Add indexes for performance
 CREATE INDEX IF NOT EXISTS idx_posts_client_id ON posts(client_id);
-CREATE INDEX IF NOT EXISTS idx_posts_scheduled_date ON posts(scheduled_date);
+CREATE INDEX IF NOT EXISTS idx_posts_date ON posts(date);
 `;
 
 async function applySchema() {
-    try {
-        console.log('Applying database schema...');
-        await client.connect();
-        await client.query(schemaSql);
-        console.log('Schema applied successfully!');
-        await client.end();
-    } catch (err) {
-        console.error('Error applying schema:', err);
-        process.exit(1);
-    }
+  try {
+    console.log('Applying database schema...');
+    await client.connect();
+    await client.query(schemaSql);
+    console.log('Schema applied successfully!');
+    await client.end();
+  } catch (err) {
+    console.error('Error applying schema:', err);
+    process.exit(1);
+  }
 }
 
 applySchema();
