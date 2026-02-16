@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import { fetchClients, fetchScopes, createScope, deleteScope, fetchPosts, createPost, updatePost, type Client, type Scope, type Post } from '../services/api';
-import { ArrowLeft, Trash2, Plus, CheckCircle, AlertTriangle, Clock, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Trash2, Plus, CheckCircle, Clock } from 'lucide-react';
 import './ClientDetails.css';
 
 // Helper function for status check
