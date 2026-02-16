@@ -1,0 +1,205 @@
+.btn-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-icon.delete:hover {
+    background: rgba(255, 80, 80, 0.1);
+}
+
+.tabs {
+    display: flex;
+    padding: 4px;
+    gap: 4px;
+}
+
+.tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: var(--color-text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+    background: rgba(139, 100, 253, 0.15);
+    color: var(--color-primary);
+}
+
+/* Scopes List */
+.scopes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.scope-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--glass-border);
+}
+
+.scope-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.days-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.day-tag {
+    font-size: 0.75rem;
+    background: rgba(139, 100, 253, 0.2);
+    color: #c4b5fd;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Form Styles */
+.scope-form {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--glass-border);
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    color: white;
+    font-family: inherit;
+    outline: none;
+}
+
+.weekdays-selector {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.day-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--color-text-muted);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.day-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.day-btn.selected {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* Posts List */
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.post-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid var(--glass-border);
+    transition: background 0.2s ease;
+}
+
+.post-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.post-date {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    min-width: 100px;
+}
+
+.post-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.btn-check {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+.btn-check:hover {
+    color: var(--color-success);
+    background: rgba(0, 210, 106, 0.1);
+}
+
+.btn-check.active {
+    color: var(--color-success);
+}

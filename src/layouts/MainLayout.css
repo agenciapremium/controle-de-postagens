@@ -1,0 +1,23 @@
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+    background: radial-gradient(circle at top right, #1f1a2e 0%, var(--color-bg-dark) 40%);
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    /* Sidebar width + gap */
+    padding: 20px;
+    padding-left: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    height: calc(100vh - 40px);
+    width: 100%;
+    padding: 32px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
