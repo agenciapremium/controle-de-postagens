@@ -1,16 +1,8 @@
 
-import { Client } from 'pg';
+import { Pool } from 'pg';
 
-const client = new Client({
+const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
 
-let connected = false;
-
-export async function getDbClient() {
-    if (!connected) {
-        await client.connect();
-        connected = true;
-    }
-    return client;
-}
+export const getDbClient = async () => pool;
